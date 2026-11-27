@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Boyang Wang, Tech Lead &amp; Engineering Manager, World Model at XPENG. Research on interactive world models, video generation, and autonomous driving.">
+  <title>Boyang Wang</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #54575d;
+      --blue: #244e8b;
+      --line: #cdd0d4;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { background: #fff; }
+    body {
+      max-width: 58rem;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.25rem) clamp(1.25rem, 4vw, 3rem);
+      background: #fff;
+      color: var(--ink);
+      font: 1.08rem/1.55 var(--serif);
+    }
+    h1, h2, h3, p, ul { margin: 0; }
+    a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-decoration-thickness: 1px;
+      text-underline-offset: .2em;
+    }
+    a:hover, a:focus-visible { color: #153969; text-decoration-color: currentColor; }
+    @media (prefers-reduced-motion: no-preference) {
+      a { transition: color 140ms ease, text-decoration-color 140ms ease; }
+    }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .skip { position: absolute; clip-path: inset(50%); }
+    .skip:focus { clip-path: none; background: white; }
+    .profile { display: flow-root; margin-bottom: 2.3rem; }
+    .portrait {
+      float: right;
+      width: clamp(5rem, 16vw, 9rem);
+      aspect-ratio: 4 / 5;
+      margin: 0 0 .8rem clamp(1rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      background: #fff url("./portrait.webp") center 35% / cover no-repeat;
+    }
+    h1 { font-size: clamp(2.65rem, 5vw, 3.45rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.1; }
+    .position { margin-top: .5rem; font: 1rem/1.5 var(--sans); }
+    .name-row { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem .8rem; }
+    .contact { display: inline-flex; gap: .15rem; }
+    .contact a { display: grid; place-items: center; width: 2rem; height: 2rem; color: var(--muted); }
+    .contact a:hover, .contact a:focus-visible { color: var(--blue); }
+    .contact svg { width: 1.15rem; height: 1.15rem; }
+    .bio { margin-top: 1.3rem; }
+    .bio p + p { margin-top: .75rem; }
+    .bio strong, .news strong { font-weight: 700; }
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: .85rem;
+      margin-bottom: 1rem;
+      font-size: 1.77rem;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      align-self: center;
+      border-top: 1px solid var(--line);
+    }
+    ul { list-style: none; padding: 0; }
+    .news li, .publication { display: grid; grid-template-columns: 6.3rem minmax(0, 1fr); gap: 1rem; }
+    .news li + li { margin-top: .46rem; }
+    .news li > :first-child, .publication-meta { color: var(--muted); font: .89rem/1.55 var(--sans); }
+    .news li > :first-child { padding-top: .15rem; font-variant-numeric: tabular-nums; }
+    #publications, #experience { margin-top: 2.3rem; }
+    .appointments > li { display: grid; grid-template-columns: 10.2rem minmax(0, 1fr); gap: 1rem; }
+    .appointments > li + li { margin-top: 1rem; }
+    .company-roles { margin-top: .45rem; padding-left: 1rem; border-left: 1px solid var(--line); }
+    .company-roles li + li { margin-top: .75rem; }
+    .company-roles h4 { margin: 0; font-size: 1rem; font-weight: 500; font-style: italic; }
+    .period { color: var(--muted); font: .89rem/1.55 var(--sans); padding-top: .16rem; }
+    .appointments p { font-size: 1rem; }
+    .appointments h3 + p { font-style: italic; }
+    .appointments p + p { margin-top: .2rem; }
+    .publication { padding: .35rem 0; }
+    .publication + .publication { margin-top: 1.35rem; }
+    .publication-meta { padding-top: .15rem; }
+    .publication-meta span { display: block; }
+    .publication-meta .venue { color: var(--ink); font-weight: 600; }
+    h3 { font-size: 1.19rem; font-weight: 600; line-height: 1.32; text-wrap: pretty; }
+    .publication h3 { font-weight: 400; }
+    .publication h3 a { color: var(--ink); }
+    .publication h3 a:hover, .publication h3 a:focus-visible { color: var(--blue); }
+    .authors, .finding { margin-top: .33rem; font-size: 1rem; line-height: 1.45; }
+    .authors { color: var(--muted); }
+    .authors strong { color: var(--ink); white-space: nowrap; }
+    .credit { color: var(--ink); font-style: italic; }
+    .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .2rem 1.05rem;
+      margin-top: .5rem;
+      font: .875rem/1.5 ui-monospace, "SFMono-Regular", Consolas, monospace;
+    }
+    .links a { display: inline-flex; align-items: center; gap: .35em; padding: .12rem 0; }
+    .links svg {
+      width: 1em;
+      height: 1em;
+      flex: none;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    details { margin-top: 1.75rem; border-top: 1px solid var(--line); }
+    summary { padding: .85rem 0; color: var(--blue); cursor: pointer; }
+    details[open] summary { margin-bottom: .5rem; }
+    :target { scroll-margin-top: 1rem; }
+    @media (max-width: 35rem) {
+      body { font-size: 1.02rem; }
+      .news li { grid-template-columns: 5.2rem minmax(0, 1fr); gap: .6rem; }
+      .publication { display: block; }
+      .appointments > li { display: block; }
+      .period { margin-bottom: .16rem; }
+      .publication-meta { display: flex; gap: .5rem; margin-bottom: .3rem; align-items: baseline; }
+      .profile, #publications { margin-block-end: 1.75rem; }
+    }
+    @media print {
+      body { max-width: none; padding: 0; }
+      .publication { break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="icon-definitions" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-paper" viewBox="0 0 16 16"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13 M6.3 8h4.4 M6.3 10.6h4.4"/></symbol>
+      <symbol id="icon-web" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.1"/><ellipse cx="8" cy="8" rx="2.7" ry="6.1"/><path d="M2 8h12"/></symbol>
+      <symbol id="icon-demo" viewBox="0 0 16 16"><rect x="1.5" y="3" width="13" height="10" rx="1.7"/><path d="m6.5 5.5 4 2.5-4 2.5z"/></symbol>
+      <symbol id="icon-code" viewBox="0 0 16 16"><path d="m4.7 4.7-3.2 3.3 3.2 3.3 M11.3 4.7l3.2 3.3-3.2 3.3 M9.4 2.5l-2.8 11"/></symbol>
+      <symbol id="icon-weights" viewBox="0 0 16 16"><path d="m8 1.5 6 3.2v6.6l-6 3.2-6-3.2V4.7z M2 4.7 8 8l6-3.3 M8 8v6.5"/></symbol>
+      <symbol id="icon-news" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M4.5 5h7 M4.5 8h3v3h-3z M9.5 8h2 M9.5 11h2"/></symbol>
+    </defs>
+  </svg>
+  <a class="skip" href="#publications">Skip to selected publications</a>
+  <main>
+    <header class="profile" id="profile">
+      <!-- Place portrait.webp beside index.html to fill this reserved space. -->
+      <div class="portrait" aria-hidden="true"></div>
+      <div class="name-row">
+        <h1>Boyang Wang</h1>
+        <div class="contact">
+          <a href="mailto:brycebywang@gmail.com" aria-label="Email Boyang Wang at brycebywang@gmail.com" title="brycebywang@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="2.5" y="5" width="19" height="14" rx="1.8"/><path d="m3.5 6 8.5 7 8.5-7"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/bryce-wang-4625b321a/" aria-label="Boyang Wang on LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path fill-rule="evenodd" d="M3 2h18a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm2.5 7.5h3V19h-3zM7 5.1a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Zm3.5 4.4h2.9v1.3c.5-.9 1.5-1.6 3-1.6 2.6 0 3.5 1.6 3.5 4.2V19h-3v-5.1c0-1.3-.2-2.2-1.5-2.2-1.4 0-1.9 1-1.9 2.3v5h-3z"/>
+            </svg>
+          </a>
+          <a href="https://scholar.google.com/citations?user=hSVNCIQAAAAJ" aria-label="Boyang Wang on Google Scholar" title="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="m12 2 12 7-12 7L0 9z M5 14l7 4 7-4v4c-4 4-10 4-14 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <p class="position">Tech Lead &amp; Engineering Manager, World Model · <a href="https://www.xpeng.com/">XPENG</a></p>
+      <div class="bio">
+        <p>At XPENG, I founded and lead the <strong>Generative World Model (GWM) team</strong>. We develop <a href="https://xworld16.github.io/"><em>X-World</em></a>, a multi-camera world model for autonomous driving.</p>
+        <p>Before joining XPENG, I built and led Skywork AI’s <strong>Spatial Intelligence team</strong>, where I was the project lead for <a href="https://matrix-game-homepage.github.io/">Matrix-Game</a> and <a href="https://matrix-game-v2.github.io/">Matrix-Game 2.0</a>.</p>
+        <p>I earned my master’s degree at Nanjing University in 2022. I received my bachelor’s degree from the Department of Computer Science and Technology at Hebei University of Economics and Business in 2019.</p>
+      </div>
+    </header>
+
+    <section id="news" aria-labelledby="news-heading">
+      <h2 id="news-heading">News</h2>
+      <ul class="news">
+        <li><time datetime="2026-11">Nov 2026</time><p>With <a href="https://arxiv.org/abs/2611.00596">X-World 1.6</a>, we introduced Virtual City. We can revisit any time and place in the city for closed-loop training.</p></li>
+        <li><time datetime="2026-03">Mar 2026</time><p>We released <a href="https://arxiv.org/abs/2603.19979">X-World</a>, a controllable multi-camera world model for autonomous driving. </p></li>
+        <li><time datetime="2025-08">Aug 2025</time><p>We released <a href="https://matrix-game-v2.github.io/">Matrix-Game 2.0</a>, the first open-source interactive world model to generate several minutes of continuous gameplay in real time at 25 fps.</p></li>
+        <li><time datetime="2025-06">Jun 2025</time><p>We open-sourced <a href="https://matrix-game-homepage.github.io/">Matrix-Game</a>, an interactive world model for Minecraft. It outperformed contemporary Minecraft world models on every metric in our GameWorld Score benchmark.</p></li>
+      </ul>
+    </section>
+
+    <section id="publications" aria-labelledby="pub-heading">
+      <h2 id="pub-heading">Selected Publications</h2>
+      <ul>
+        <li class="publication" id="paper-2611-00596">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2611.00596"><strong>X-World 1.6</strong>: Building Controllable Virtual Cities with World Models</a></h3>
+            <p class="authors"><strong>Boyang Wang</strong> <em class="credit">(Project lead)</em>, Boyi Sun, Chaoda Zheng, Dongbin Zhang, Guangfeng Jiang, et al.</p>
+            <p class="finding">Reconstructing the same road scene from reference images or 3D data lets us test how different driving actions play out across multiple cameras.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2611.00596"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://xworld16.github.io/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+              <a href="https://x-world-drive.github.io/"><svg aria-hidden="true" focusable="false"><use href="#icon-demo"></use></svg>Driving demo</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2508-13009">
+          <div class="publication-meta"><span class="venue">2025</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2508.13009"><strong>Matrix-Game 2.0</strong>: An Open-Source, Real-Time, and Streaming Interactive World Model</a></h3>
+            <p class="authors">Xianglong He, Chunli Peng, Zexiang Liu, <strong>Boyang Wang</strong> <em class="credit">(Co-first author and project lead)</em>, Yifan Zhang, et al.</p>
+            <p class="finding">A few-step video diffusion model generates a game world in real time as a player moves and turns the camera.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2508.13009"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://matrix-game-v2.github.io/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+              <a href="https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-2"><svg aria-hidden="true" focusable="false"><use href="#icon-code"></use></svg>Code</a>
+              <a href="https://huggingface.co/Skywork/Matrix-Game-2.0"><svg aria-hidden="true" focusable="false"><use href="#icon-weights"></use></svg>Model weights</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+      <details>
+        <summary>Other publications (9)</summary>
+        <ul>
+        <li class="publication" id="paper-2611-24633">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Preprint</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2611.24633"><strong>H3Remover</strong>: Reinforcing Video Object Removal without Paired Data</a></h3>
+            <p class="authors">Kangjie Chen, Xiangyu Li, Jinhao Deng, Dongbin Zhang, …, <strong>Boyang Wang</strong> <em class="credit">(Corresponding author)</em></p>
+            <p class="finding">We train a video editor to remove objects and preserve the surrounding scene without needing a matching clip of the scene with the object absent.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2611.24633"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://chenkangjie1123.github.io/H3Remover/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+              <a href="https://github.com/chenkangjie1123/H3Remover"><svg aria-hidden="true" focusable="false"><use href="#icon-code"></use></svg>Code</a>
+              <a href="https://huggingface.co/chenkangjie1123/H3Remover"><svg aria-hidden="true" focusable="false"><use href="#icon-weights"></use></svg>Model weights</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2610-12156">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Preprint</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2610.12156"><strong>Connected Self Forcing</strong>: Beyond Local Learning in Video Autoregression</a></h3>
+            <p class="authors">Dongbin Zhang, Chaoda Zheng, Kangjie Chen, Xiangyu Li, …, <strong>Boyang Wang</strong> <em class="credit">(Corresponding author)</em></p>
+            <p class="finding">We train earlier video chunks using losses from later predictions, so the model learns how its past outputs affect the rest of a sequence.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2610.12156"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://eastbeanzhang.github.io/CSF/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2609-36851">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Preprint</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2609.36851"><strong>RoXDrive</strong>: Closed-Loop Reinforcement Learning for End-to-End Autonomous Driving via Action-Faithful Rollouts</a></h3>
+            <p class="authors">Hongbin Lin, Chaoda Zheng, Yiming Yang, Xiangyu Li, …, <strong>Boyang Wang</strong> <em class="credit">(Co-corresponding author)</em>, Zhen Li</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2609.36851"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://hongbin98.github.io/RoXDrive/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2609-33253">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Preprint</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2609.33253"><strong>VGGT-Diff</strong>: Visual Geometry Meets Diffusion for Sparse-View Novel View Synthesis</a></h3>
+            <p class="authors">Kangjie Chen, Xiangyu Li, Dongbin Zhang, Chaoda Zheng, …, <strong>Boyang Wang</strong> <em class="credit">(Corresponding author)</em></p>
+            <p class="finding">We use 3D geometry inferred from a few images to guide a diffusion model as it synthesizes views from new camera positions.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2609.33253"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://chenkangjie1123.github.io/VGGT-Diff/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+              <a href="https://github.com/chenkangjie1123/VGGT-Diff"><svg aria-hidden="true" focusable="false"><use href="#icon-code"></use></svg>Code</a>
+              <a href="https://huggingface.co/chenkangjie1123/VGGT-Diff-NVS-480x832-100K-6K"><svg aria-hidden="true" focusable="false"><use href="#icon-weights"></use></svg>Model weights</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2605-24892">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2605.24892"><strong>X-Foresight</strong>: A Joint Vision-Action Causal Forecasting Network via Predictive World Modeling</a></h3>
+            <p class="authors">Baolu Li, Jingyu Qian, Rui Guo, Yilun Chen, …, <strong>Boyang Wang</strong> <em class="credit">(Contributor)</em>, et al.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2605.24892"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://x-foresight-1.github.io/en/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2604-20289">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2604.20289"><strong>X-Cache</strong>: Cross-Chunk Block Caching for Few-Step Autoregressive World Models Inference</a></h3>
+            <p class="authors">Yixiao Zeng, Jianlei Zheng, Chaoda Zheng, Shijia Chen, …, <strong>Boyang Wang</strong> <em class="credit">(Advisors and Project Leads group)</em>, et al.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2604.20289"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://www.xpeng.com/news/019e0199813b9dd703de8a02822900a1"><svg aria-hidden="true" focusable="false"><use href="#icon-news"></use></svg>XPENG announcement</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2603-19979">
+          <div class="publication-meta"><span class="venue">2026</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2603.19979"><strong>X-World</strong>: Controllable Ego-Centric Multi-Camera World Models for Scalable End-to-End Driving</a></h3>
+            <p class="authors">Chaoda Zheng, Sean Li, Jinhao Deng, Zhennan Wang, …, <strong>Boyang Wang</strong> <em class="credit">(Project lead)</em>, Yu Zhang, Xianming Liu</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2603.19979"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://x-world-1.github.io/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2512-11226">
+          <div class="publication-meta"><span class="venue">2025</span>
+            <span>Preprint</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2512.11226"><strong>FutureX</strong>: Enhance End-to-End Autonomous Driving via Latent Chain-of-Thought World Model</a></h3>
+            <p class="authors">Hongbin Lin, Yiming Yang, Yifan Zhang, Chaoda Zheng, …, <strong>Boyang Wang</strong> <em class="credit">(Project lead)</em>, et al.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2512.11226"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+            </p>
+          </div>
+        </li>
+        <li class="publication" id="paper-2506-18701">
+          <div class="publication-meta"><span class="venue">2025</span>
+            <span>Technical report</span></div>
+          <div>
+            <h3><a href="https://arxiv.org/abs/2506.18701"><strong>Matrix-Game</strong>: Interactive World Foundation Model</a></h3>
+            <p class="authors">Yifan Zhang, Chunli Peng, <strong>Boyang Wang</strong> <em class="credit">(Co-first author and project lead)</em>, Puyi Wang, Qingcheng Zhu, et al.</p>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2506.18701"><svg aria-hidden="true" focusable="false"><use href="#icon-paper"></use></svg>arXiv</a>
+              <a href="https://matrix-game-homepage.github.io/"><svg aria-hidden="true" focusable="false"><use href="#icon-web"></use></svg>Project page</a>
+              <a href="https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-1"><svg aria-hidden="true" focusable="false"><use href="#icon-code"></use></svg>Code</a>
+              <a href="https://huggingface.co/Skywork/Matrix-Game"><svg aria-hidden="true" focusable="false"><use href="#icon-weights"></use></svg>Model weights</a>
+            </p>
+          </div>
+        </li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+      <ul class="appointments">
+        <li>
+          <div class="period"><time datetime="2025-09">Sep 2025</time> – Present</div>
+          <div>
+            <h3>XPENG</h3>
+            <p>Tech Lead &amp; Engineering Manager, World Model</p>
+            <p>I lead the development of <em>X-World</em>, which we use to train and evaluate driving policies in closed loop. X-World generates new camera views in response to each driving action, and training with this feedback has <strong>improved policy performance</strong>. With X-World 1.6, we can revisit the same road scene and compare the outcomes of different actions.</p>
+          </div>
+        </li>
+        <li>
+          <div class="period"><time datetime="2024-02">Feb 2024</time> – <time datetime="2025-09">Sep 2025</time></div>
+          <div>
+            <h3>Kunlun Tech · Skywork AI</h3>
+            <ul class="company-roles">
+              <li>
+                <h4>Tech Lead, World Model</h4>
+                <div class="period"><time datetime="2024-12">Dec 2024</time> – <time datetime="2025-09">Sep 2025</time></div>
+                <p>I founded Skywork AI’s Spatial Intelligence team and <strong>led both generations of <a href="https://github.com/SkyworkAI/Matrix-Game">Matrix-Game</a></strong>. The first model generated game environments that responded to player actions. Matrix-Game 2.0 brought that interaction to <em>real time</em>. We released code and model weights for both.</p>
+              </li>
+              <li>
+                <h4>Staff LLM Algorithm Engineer</h4>
+                <div class="period"><time datetime="2024-02">Feb 2024</time> – <time datetime="2024-11">Nov 2024</time> · Beijing</div>
+                <p>I developed tool calling for <em>Skywork Agent</em> and built its data preparation and evaluation infrastructure. For <em>Skywork-o1</em>, I designed an <strong>RSI loop</strong> that used feedback on generated solutions to refine the reasoning examples for the next round of training.</p>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="period"><time datetime="2022-12">Dec 2022</time> – <time datetime="2024-02">Feb 2024</time></div>
+          <div>
+            <h3>ByteDance</h3>
+            <p>Machine Learning Engineer · Beijing</p>
+            <p>I developed <em>near-real-time detection</em> of fraudulent ad traffic and integrated it with enforcement across mini apps and games.</p>
+          </div>
+        </li>
+        <li>
+          <div class="period"><time datetime="2022-06">Jun 2022</time> – <time datetime="2022-12">Dec 2022</time></div>
+          <div>
+            <h3>Tencent</h3>
+            <p>Applied Scientist, Machine Learning · WXGroup · Guangzhou</p>
+            <p>I built a <em>fraud detection system</em> that used relationships between WeCom accounts to identify fraudulent activity.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
